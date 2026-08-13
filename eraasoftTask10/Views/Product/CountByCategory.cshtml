@@ -1,11 +1,23 @@
 ﻿<h1>Products Count by Category</h1>
 
-<p>
-    Category ID:
-    <strong>@ViewBag.CategoryId</strong>
-</p>
+@if (ViewBag.CategoryName != null)
+{
+    <p>
+        Category:
+        <strong>@ViewBag.CategoryName</strong>
+    </p>
 
-<p>
-    Number of Products:
-    <strong>@ViewBag.ProductCount</strong>
-</p>
+    <p>
+        Category ID:
+        <strong>@ViewBag.CategoryId</strong>
+    </p>
+
+    <p>
+        Number of Products:
+        <strong>@ViewBag.ProductCount</strong>
+    </p>
+}
+else
+{
+    <p>Category not found.</p>
+}

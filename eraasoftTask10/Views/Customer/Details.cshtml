@@ -1,0 +1,20 @@
+﻿@model eraasoftTask10.Models.Customer
+
+<h1>Customer Details</h1>
+
+@if (Model != null)
+{
+    <p><strong>ID:</strong> @Model.CustomerId</p>
+    <p><strong>First Name:</strong> @Model.FirstName</p>
+    <p><strong>Last Name:</strong> @Model.LastName</p>
+    <p><strong>Phone:</strong> @Model.Phone</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Street:</strong> @Model.Street</p>
+    <p><strong>City:</strong> @Model.City</p>
+    <p><strong>State:</strong> @Model.State</p>
+    <p><strong>Zip Code:</strong> @Model.ZipCode</p>
+}
+else
+{
+    <p>Customer not found.</p>
+}

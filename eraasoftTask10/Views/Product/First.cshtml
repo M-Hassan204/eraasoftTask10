@@ -1,0 +1,15 @@
+﻿@model eraasoftTask10.Models.Product
+
+<h1>First Product</h1>
+
+@if (Model != null)
+{
+    <p><strong>ID:</strong> @Model.ProductId</p>
+    <p><strong>Name:</strong> @Model.ProductName</p>
+    <p><strong>Model Year:</strong> @Model.ModelYear</p>
+    <p><strong>List Price:</strong> @Model.ListPrice</p>
+}
+else
+{
+    <p>No product found.</p>
+}

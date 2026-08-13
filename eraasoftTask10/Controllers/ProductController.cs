@@ -57,10 +57,14 @@ namespace eraasoftTask10.Controllers
         }
         public IActionResult CountByCategory(int id)
         {
+            var category = _context.Categories
+                .FirstOrDefault(c => c.CategoryId == id);
+
             var count = _context.Products
                 .Count(p => p.CategoryId == id);
 
             ViewBag.CategoryId = id;
+            ViewBag.CategoryName = category?.CategoryName;
             ViewBag.ProductCount = count;
 
             return View();
@@ -84,6 +88,12 @@ namespace eraasoftTask10.Controllers
             ViewBag.AveragePrice = average;
 
             return View();
+        }
+        public IActionResult AllProducts()
+        {
+            var products = _context.Products.ToList();
+
+            return View(products);
         }
     }
 }

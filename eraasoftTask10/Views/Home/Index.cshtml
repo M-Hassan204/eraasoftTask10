@@ -1,204 +1,124 @@
-﻿@{
-    ViewData["Title"] = "Bike Store Dashboard";
+﻿@model eraasoftTask10.ViewModels.HomeFormViewModel
+
+@{
+    ViewData["Title"] = "HTML Form Example";
 }
 
-<div class="container py-5">
+<div class="form-page">
 
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold">Bike Store Dashboard</h1>
-        <p class="text-muted">
-            Manage and explore BikeStores data using EF Core & ASP.NET Core MVC
-        </p>
-    </div>
+    <h1> The Form </h1>
 
-    <!-- Categories -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h3 class="card-title">Categories</h3>
-            <p class="text-muted">View all product categories.</p>
+    
 
-            <a asp-controller="Category"
-               asp-action="Index"
-               class="btn btn-primary">
-                View Categories
-            </a>
-        </div>
-    </div>
+    <form asp-controller="Home"
+          asp-action="Index"
+          method="post">
 
-    <!-- Products -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h3 class="card-title">Products</h3>
-            <p class="text-muted">All available product operations.</p>
+        <!-- User Information -->
+        <fieldset>
+            <legend>User Information</legend>
 
-            <div class="d-flex flex-wrap gap-2">
-
-                <a asp-controller="Product"
-                   asp-action="Index"
-                   class="btn btn-primary">
-                    All Products
-                </a>
-
-                <a asp-controller="Product"
-                   asp-action="First"
-                   class="btn btn-success">
-                    First Product
-                </a>
-
-                <form asp-controller="Product"
-                      asp-action="Details"
-                      method="get"
-                      class="d-flex gap-2">
-
-                    <input type="number"
-                           name="id"
-                           class="form-control"
-                           placeholder="Product ID"
-                           min="1"
-                           required />
-
-                    <button type="submit"
-                            class="btn btn-info">
-                        Product by ID
-                    </button>
-                </form>
-
-                <form asp-controller="Product"
-                      asp-action="ByYear"
-                      method="get"
-                      class="d-flex gap-2">
-
-                    <input type="number"
-                           name="year"
-                           class="form-control"
-                           placeholder="Model Year"
-                           min="2000"
-                           required />
-
-                    <button type="submit"
-                            class="btn btn-warning">
-                        Products by Year
-                    </button>
-                </form>
-
-                <a asp-controller="Product"
-                   asp-action="ProductsWithBrands"
-                   class="btn btn-dark">
-                    Products & Brands
-                </a>
-
+            <div class="form-row">
+                <label asp-for="Username">Username:</label>
+                <input asp-for="Username" type="text" />
             </div>
-        </div>
-    </div>
 
-    <!-- Category Calculations -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h3 class="card-title">Category Calculations</h3>
-            <p class="text-muted">
-                Count products and calculate total prices by category.
-            </p>
-
-            <div class="d-flex flex-wrap gap-2">
-
-                <form asp-controller="Product"
-                      asp-action="CountByCategory"
-                      method="get"
-                      class="d-flex gap-2">
-
-                    <input type="number"
-                           name="id"
-                           class="form-control"
-                           placeholder="Category ID"
-                           min="1"
-                           required />
-
-                    <button type="submit"
-                            class="btn btn-secondary">
-                        Count Products
-                    </button>
-                </form>
-
-                <form asp-controller="Product"
-                      asp-action="TotalPriceByCategory"
-                      method="get"
-                      class="d-flex gap-2">
-
-                    <input type="number"
-                           name="id"
-                           class="form-control"
-                           placeholder="Category ID"
-                           min="1"
-                           required />
-
-                    <button type="submit"
-                            class="btn btn-secondary">
-                        Total List Price
-                    </button>
-                </form>
-
-                <a asp-controller="Product"
-                   asp-action="AveragePrice"
-                   class="btn btn-outline-primary">
-                    Average List Price
-                </a>
-
+            <div class="form-row">
+                <label asp-for="Email">Email:</label>
+                <input asp-for="Email" type="email" />
             </div>
-        </div>
-    </div>
 
-    <!-- Customer -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h3 class="card-title">Customer</h3>
-            <p class="text-muted">Retrieve a customer by ID.</p>
+            <div class="form-row">
+                <label asp-for="Password">Password:</label>
+                <input asp-for="Password" type="password" />
+            </div>
+        </fieldset>
 
-            <form asp-controller="Customer"
-                  asp-action="Details"
-                  method="get"
-                  class="d-flex gap-2"
-                  style="max-width: 400px;">
+        <!-- Contact Information -->
+        <fieldset>
+            <legend>Contact Information</legend>
 
-                <input type="number"
-                       name="id"
-                       class="form-control"
-                       placeholder="Customer ID"
-                       min="1"
-                       required />
+            <div class="form-row">
+                <label asp-for="Phone">Phone:</label>
+                <input asp-for="Phone" type="tel" />
+            </div>
 
-                <button type="submit"
-                        class="btn btn-primary">
-                    Find Customer
-                </button>
-            </form>
-        </div>
-    </div>
+            <div class="form-column">
+                <label asp-for="Message">Message:</label>
+                <textarea asp-for="Message"></textarea>
+            </div>
+        </fieldset>
 
-    <!-- Orders -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h3 class="card-title">Orders</h3>
-            <p class="text-muted">Retrieve orders by status.</p>
+        <!-- Subscription -->
+        <fieldset>
+            <legend>Subscription</legend>
 
-            <form asp-controller="Order"
-                  asp-action="Status"
-                  method="post"
-                  class="d-flex gap-2"
-                  style="max-width: 450px;">
+            <div class="checkbox-row">
+                <label>
+                    <input asp-for="SubscribeNews" />
+                    Subscribe to newsletter
+                </label>
+            </div>
 
-                <select name="status" class="form-select">
-                    <option value="1">Pending</option>
-                    <option value="2">Processing</option>
-                    <option value="3">Rejected</option>
-                    <option value="4">Completed</option>
+            <div class="checkbox-row">
+                <label>
+                    <input asp-for="SubscribeOffers" />
+                    Subscribe to offers
+                </label>
+            </div>
+        </fieldset>
+
+        <!-- Preferred Language -->
+        <fieldset>
+            <legend>Preferred Language</legend>
+
+            <div class="form-row">
+                <label asp-for="PreferredLanguage">
+                    Select your preferred language:
+                </label>
+
+                <select asp-for="PreferredLanguage">
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
                 </select>
+            </div>
+        </fieldset>
 
-                <button type="submit"
-                        class="btn btn-success">
-                    Search Orders
-                </button>
-            </form>
+        <!-- Feedback -->
+        <fieldset>
+            <legend>Feedback</legend>
+
+            <div class="rating-row">
+                <label asp-for="Rating">
+                    Rate our service:
+                </label>
+
+                <input asp-for="Rating"
+                       type="range"
+                       min="1"
+                       max="10"
+                       id="ratingSlider" />
+
+                <span id="ratingValue">@Model.Rating</span>
+            </div>
+        </fieldset>
+
+        <script>
+                    const slider = document.getElementById("ratingSlider");
+                    const ratingValue = document.getElementById("ratingValue");
+
+                    slider.addEventListener("input", function() {
+                        ratingValue.textContent = this.value;
+                    });
+        </script>
+
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
         </div>
-    </div>
+
+    </form>
 
 </div>

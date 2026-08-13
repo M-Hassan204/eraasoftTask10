@@ -12,6 +12,13 @@ namespace eraasoftTask10.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Details(int id)
         {
             var customer = _context.Customers

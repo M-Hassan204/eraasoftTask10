@@ -1,26 +1,231 @@
 ﻿@model IEnumerable<eraasoftTask10.Models.Product>
 
-<h1>All Products</h1>
+@{
+    ViewData["Title"] = "Products";
+}
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Model Year</th>
-            <th>List Price</th>
-        </tr>
-    </thead>
+<div class="container py-5">
 
-    <tbody>
-        @foreach (var product in Model)
-        {
-            <tr>
-                <td>@product.ProductId</td>
-                <td>@product.ProductName</td>
-                <td>@product.ModelYear</td>
-                <td>@product.ListPrice</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="text-center mb-5">
+        <h1>Products</h1>
+        <p class="text-muted">
+            Browse products and perform product operations
+        </p>
+    </div>
+
+    <!-- All Products -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>All Products</h4>
+
+            <p class="text-muted">
+                Display all products from the database.
+            </p>
+
+            <a asp-controller="Product"
+               asp-action="Index"
+               class="btn btn-primary">
+                View All Products
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- First Product -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>First Product</h4>
+
+            <p class="text-muted">
+                Retrieve the first product.
+            </p>
+
+            <a asp-controller="Product"
+               asp-action="First"
+               class="btn btn-success">
+                View First Product
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- Product By ID -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>Product By ID</h4>
+
+            <p class="text-muted">
+                Search for a specific product using its ID.
+            </p>
+
+            <form asp-controller="Product"
+                  asp-action="Details"
+                  method="get"
+                  class="d-flex gap-2"
+                  style="max-width: 500px;">
+
+                <input type="number"
+                       name="id"
+                       class="form-control"
+                       placeholder="Enter Product ID"
+                       min="1"
+                       required />
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Find Product
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- Products By Year -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>Products By Model Year</h4>
+
+            <p class="text-muted">
+                Retrieve all products with a specific model year.
+            </p>
+
+            <form asp-controller="Product"
+                  asp-action="ByYear"
+                  method="get"
+                  class="d-flex gap-2"
+                  style="max-width: 500px;">
+
+                <input type="number"
+                       name="year"
+                       class="form-control"
+                       placeholder="Enter Model Year"
+                       min="2000"
+                       required />
+
+                <button type="submit"
+                        class="btn btn-warning">
+                    Search Products
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- Products With Brands -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>Products & Brands</h4>
+
+            <p class="text-muted">
+                Display product names with their corresponding brand names.
+            </p>
+
+            <a asp-controller="Product"
+               asp-action="ProductsWithBrands"
+               class="btn btn-dark">
+                View Products & Brands
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- Count By Category -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>Products Count By Category</h4>
+
+            <p class="text-muted">
+                Count the number of products in a specific category.
+            </p>
+
+            <form asp-controller="Product"
+                  asp-action="CountByCategory"
+                  method="get"
+                  class="d-flex gap-2"
+                  style="max-width: 500px;">
+
+                <input type="number"
+                       name="id"
+                       class="form-control"
+                       placeholder="Enter Category ID"
+                       min="1"
+                       required />
+
+                <button type="submit"
+                        class="btn btn-secondary">
+                    Count Products
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- Total Price By Category -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>Total List Price By Category</h4>
+
+            <p class="text-muted">
+                Calculate the total list price of products in a category.
+            </p>
+
+            <form asp-controller="Product"
+                  asp-action="TotalPriceByCategory"
+                  method="get"
+                  class="d-flex gap-2"
+                  style="max-width: 500px;">
+
+                <input type="number"
+                       name="id"
+                       class="form-control"
+                       placeholder="Enter Category ID"
+                       min="1"
+                       required />
+
+                <button type="submit"
+                        class="btn btn-info">
+                    Calculate Total
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- Average Price -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4>Average List Price</h4>
+
+            <p class="text-muted">
+                Calculate the average list price of all products.
+            </p>
+
+            <a asp-controller="Product"
+               asp-action="AveragePrice"
+               class="btn btn-outline-primary">
+                Calculate Average
+            </a>
+
+        </div>
+    </div>
+
+</div>

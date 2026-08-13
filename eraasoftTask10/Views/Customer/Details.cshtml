@@ -1,20 +1,71 @@
 ﻿@model eraasoftTask10.Models.Customer
 
-<h1>Customer Details</h1>
+@{
+    ViewData["Title"] = "Customer Details";
+}
 
-@if (Model != null)
-{
-    <p><strong>ID:</strong> @Model.CustomerId</p>
-    <p><strong>First Name:</strong> @Model.FirstName</p>
-    <p><strong>Last Name:</strong> @Model.LastName</p>
-    <p><strong>Phone:</strong> @Model.Phone</p>
-    <p><strong>Email:</strong> @Model.Email</p>
-    <p><strong>Street:</strong> @Model.Street</p>
-    <p><strong>City:</strong> @Model.City</p>
-    <p><strong>State:</strong> @Model.State</p>
-    <p><strong>Zip Code:</strong> @Model.ZipCode</p>
-}
-else
-{
-    <p>Customer not found.</p>
-}
+<div class="container py-5">
+
+    <h1 class="mb-4">Customer Details</h1>
+
+    @if (Model == null)
+    {
+        <div class="alert alert-warning">
+            Customer not found.
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">
+                    @Model.FirstName @Model.LastName
+                </h4>
+
+                <p>
+                    <strong>Customer ID:</strong>
+                    @Model.CustomerId
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    @Model.Phone
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    @Model.Email
+                </p>
+
+                <p>
+                    <strong>Street:</strong>
+                    @Model.Street
+                </p>
+
+                <p>
+                    <strong>City:</strong>
+                    @Model.City
+                </p>
+
+                <p>
+                    <strong>State:</strong>
+                    @Model.State
+                </p>
+
+                <p>
+                    <strong>Zip Code:</strong>
+                    @Model.ZipCode
+                </p>
+
+                <a asp-controller="Customer"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+                    Search Another Customer
+                </a>
+
+            </div>
+        </div>
+    }
+
+</div>
